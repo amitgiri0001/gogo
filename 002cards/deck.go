@@ -19,6 +19,9 @@ func newDeck() deck {
 	return cards
 }
 
+/**
+ * Receiver block to attach method to the deck type.
+ */
 func (d deck) print() {
 	for _, card := range d {
 		fmt.Println(card)
