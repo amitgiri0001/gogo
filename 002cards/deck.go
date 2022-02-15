@@ -1,14 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"strings"
+)
 
 type deck []string
 
 func newDeck() deck {
 	cards := deck{}
 
-	cardsSuits := []string{"Sapdes", "Hearts", "Diamonds", "Clubs"}
-	cardsValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "king", "queen", "jack"}
+	cardsSuits := []string{"Sapdes", "Hearts"}
+	cardsValues := []string{"Ace", "Two", "Three"}
 
 	for _, suit := range cardsSuits {
 		for _, value := range cardsValues {
@@ -23,7 +28,35 @@ func newDeck() deck {
  * Receiver block to attach method to the deck type.
  */
 func (d deck) print() {
-	for _, card := range d {
-		fmt.Println(card)
+	for i, card := range d {
+		fmt.Println(i, card)
 	}
+	fmt.Println()
+}
+
+/**
+ *
+ */
+func deal(d deck, handsNumber int) (deck, deck) {
+	return d[:handsNumber], d[handsNumber:]
+}
+
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+func readFromFile(filepath string) deck {
+	bytes, err := ioutil.ReadFile(filepath)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
+
+	s := strings.Split(string(bytes), ",")
+	return deck(s)
 }
