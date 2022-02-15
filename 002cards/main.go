@@ -12,7 +12,7 @@ func main() {
 	handFromFile := readFromFile("handFile")
 	handFromFile.print()
 
-	// Read a non existing file
+	// Read a non existing file.
 	handFromFile = readFromFile("handFile_1")
 	handFromFile.print()
 }
