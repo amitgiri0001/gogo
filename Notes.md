@@ -1,5 +1,6 @@
 # Go
 - It is not an object oriented language.
+- GO is a pass by value language.
 
 # Conventions 
 - Use of **`this` or `self` is not a good** practice. It is technically correct though.
