@@ -12,4 +12,10 @@
 
 ## References
 - The slices splitting creates **two new references that still points** to the main slice.
-- 
+
+## Value and Reference data types
+- Value types: int, float, string, bool, struct (Would require pointers for references)
+- slices, maps, channels, pointers, functions
+- When we create a slice, Go will automatically create two data structures
+  - An array and a structure that records the length of the slice, the capacity of the slice, and a reference to the underlying array
+
