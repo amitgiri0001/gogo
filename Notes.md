@@ -20,3 +20,6 @@
 - When we create a slice, Go will automatically create two data structures
   - An array and a structure that records the length of the slice, the capacity of the slice, and a reference to the underlying array
 
+# Interfaces
+- In Go the types "satisfies" an interface, instead of the types "implements" an interface. Subtle difference.
+- The above means a receiver method "() xyz()" in type "A" and "() xyz()" in type "B" doesn't have to be implement an interface "I" which required "xyz()". But the types still satisfies the "requirement" of interface and hence it is valid.
